@@ -1,0 +1,32 @@
+drop table playerinfo cascade constraint
+
+create table playerinfo
+(rank number(3),
+id varchar2(10),
+pw varchar2(10) not null,
+socre number(10),
+constraint playerinfo_id_pk primary key(id)
+)
+
+drop table quiz cascade constraint
+
+create table quiz
+(no number(5),
+word varchar2(20),
+answer varchar2(20),
+difficulty varchar2(20),
+constraint quiz_word_pk primary key(word)
+)
+
+drop table wrong cascade constraint
+
+create table wrong
+(no number(5),
+word varchar2(20),
+answer varchar2(20),
+id varchar2(10),
+constraint wrong_word_fk foreign key(word) references quiz(word),
+constraint wrong_id_fk foreign key(id) references playerinfo(id)
+)
+
+commit
