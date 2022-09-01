@@ -91,12 +91,14 @@ public class DAO {
 		}
 		return false;
 	}
+	
+	
 
 	public ArrayList<PoketmonVO> select() { // [4] 랭킹 조회
 		ArrayList<PoketmonVO> plist = new ArrayList<PoketmonVO>();
 		try {
 			getCon();
-			String sql = "select * from playerinfo where score and id order by score";
+			String sql = "select id, score from playerinfo order by score";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 
