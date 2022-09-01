@@ -14,7 +14,7 @@ public class PoketmonMain {
 			System.out.print("[1]회원가입 [2]로그인 [3]게임시작 [4]랭킹조회 [5]종료 >> ");
 			int menu = sc.nextInt();
 
-			if (menu == 1) { // 회원 가입
+			if (menu == 1) { // 회원 가입 
 				System.out.print("ID : ");
 				String id = sc.next();
 				System.out.print("PassWord : ");
