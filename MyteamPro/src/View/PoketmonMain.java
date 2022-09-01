@@ -1,8 +1,10 @@
 package View;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Controller.DAO;
+import Model.PoketmonVO;
 
 public class PoketmonMain {
 
@@ -14,7 +16,7 @@ public class PoketmonMain {
 			System.out.print("[1]회원가입 [2]로그인 [3]게임시작 [4]랭킹조회 [5]종료 >> ");
 			int menu = sc.nextInt();
 
-			if (menu == 1) { // 회원 가입 
+			if (menu == 1) { // 회원 가입
 				System.out.print("ID : ");
 				String id = sc.next();
 				System.out.print("PassWord : ");
@@ -42,13 +44,16 @@ public class PoketmonMain {
 
 			}
 			if (menu == 4) { // 랭킹 조회
-
+				ArrayList<PoketmonVO> plist = dao.rank();
+				for (int i = 0; i < args.length; i++) {
+					System.out.print(plist.get(i).getId() + "\t");
+					System.out.print(plist.get(i).getScore() + "\t");
+				}
 			} else if (menu == 5) { // 프로그램 종료
 				break;
 			}
 		}
-	
-		
+
 	}
 
 }
