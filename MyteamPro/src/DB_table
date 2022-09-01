@@ -4,7 +4,7 @@ create table playerinfo
 (rank number(3),
 id varchar2(10),
 pw varchar2(10) not null,
-socre number(10),
+score number(10),
 constraint playerinfo_id_pk primary key(id)
 )
 

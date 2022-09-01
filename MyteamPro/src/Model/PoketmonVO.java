@@ -3,20 +3,18 @@ package Model;
 public class PoketmonVO {
 	private String id;
 	private String pw;
-	private String nick;
+	private int score;
 	
 	public PoketmonVO() {
 		
 	}
 
-
-	public PoketmonVO(String id, String pw, String nick) {
+	public PoketmonVO(String id, String pw, int score) {
 		super();
 		this.id = id;
 		this.pw = pw;
-		this.nick = nick;
+		this.score = score;
 	}
-
 
 	public String getId() {
 		return id;
@@ -34,11 +32,13 @@ public class PoketmonVO {
 		this.pw = pw;
 	}
 
-	public String getNick() {
-		return nick;
+	public int getScore() {
+		return score;
 	}
 
-	public void setNick(String nick) {
-		this.nick = nick;
+	public void setScore(int score) {
+		this.score = score;
 	}
+
+	
 }
