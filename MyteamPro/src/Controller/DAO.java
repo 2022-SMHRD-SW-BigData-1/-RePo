@@ -1,19 +1,25 @@
 package Controller;
 
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import Model.PoketmonVO;
+import Model.gameProcessVO;
 
 public class DAO {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
 
+	Random rd = new Random();
+	
 	public void getCon() { // DB 연결
 
 		try {
@@ -91,8 +97,6 @@ public class DAO {
 		}
 		return false;
 	}
-	
-	
 
 	public ArrayList<PoketmonVO> select() { // [4] 랭킹 조회
 		ArrayList<PoketmonVO> plist = new ArrayList<PoketmonVO>();
@@ -115,4 +119,38 @@ public class DAO {
 		}
 		return plist;
 	}
+	
+	// 문제 출력
+		// 디비에서 같은 난이도의 단어들을 가져와 랜덤으로 출력해야 함
+			public String select(int difficulty) {
+				
+				ArrayList<gameProcessVO> list = new ArrayList<gameProcessVO>();
+				int index = rd.nextInt(list.size());
+				try {
+					getCon();
+					String sql = "select word from quiz where difficulty = ?";
+					psmt = conn.prepareStatement(sql);
+					psmt.setInt(1, difficulty);
+					
+					rs = psmt.executeQuery();
+					
+					
+					if (difficulty == 1) {
+					while (rs.next()) {
+						int no = rs.getInt(1);
+						String word = rs.getString(2);
+						String answer = rs.getString(3);
+						int difficulty1 = rs.getInt(4);
+						gameProcessVO vo = new gameProcessVO(no, word, answer, difficulty1);
+						list.add(vo);
+						System.out.println(list.get(index).getWord());
+					}
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					close();
+				}
+				return list.get(index).getWord();
+		}
 }
