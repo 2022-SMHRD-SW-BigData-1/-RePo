@@ -98,7 +98,7 @@ public class DAO {
 		return false;
 	}
 
-	public ArrayList<PoketmonVO> select() { // [4] 랭킹 조회
+	public ArrayList<PoketmonVO> rank() { // [4] 랭킹 조회
 		ArrayList<PoketmonVO> plist = new ArrayList<PoketmonVO>();
 		try {
 			getCon();
@@ -108,8 +108,9 @@ public class DAO {
 
 			while (rs.next()) {
 				String id = rs.getNString(1);
-				int score = rs.getInt(2);
-				PoketmonVO vo = new PoketmonVO(); // id 하고 score 출력
+				String pw = rs.getNString(2);
+				int score = rs.getInt(3);
+				PoketmonVO vo = new PoketmonVO(id, pw, score);
 				plist.add(vo);
 			}
 		} catch (SQLException e) {
