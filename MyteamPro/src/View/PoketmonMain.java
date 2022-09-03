@@ -19,7 +19,8 @@ public class PoketmonMain {
 		Scanner sc = new Scanner(System.in);
 		DAO dao = new DAO();
 		String id = null;
-
+		System.out.println(
+				"========================================================================================================================");
 		System.out.println(
 				"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&5?7G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n"
 						+ "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P7!??7Y&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n"
@@ -41,8 +42,7 @@ public class PoketmonMain {
 						+ "@@@@@@@@@@@@@5:^!7YGGPY?!J@@@&###&@@@@BB##&&@@@@@@@@@@@@@@@@@#B&@@@@@@@@@@@@@@@@@@@@@@&&#BGG#@@@&##BGP~^!7Y5P577B@@@@@@@\r\n"
 						+ "@@@@@@@@@@@@@@5:^!77777?JG@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Y7!!~~!!!P@@@@@@@@\r\n"
 						+ "@@@@@@@@@@@@@@@Y^7J5PB#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&#GPYYB@@@@@@@@@");
-		System.out.println();
-		System.out.println();
+		
 		System.out.println(
 				"========================================================================================================================");
 
@@ -50,8 +50,8 @@ public class PoketmonMain {
 		while (true) {
 			System.out.print("[1]회원가입 [2]로그인 [3]게임시작 [4]랭킹조회 [5]오답조회 [6]종료 >> ");
 			int menu = sc.nextInt();
-			
-			//오박사 등장
+
+			System.out.println();
 
 			if (menu == 1) { // 회원 가입
 
@@ -69,8 +69,6 @@ public class PoketmonMain {
 				}
 
 			}
-			System.out.println();
-			System.out.println("========================================================================================================================");
 			
 			if (menu == 2) { // 로그인
 
@@ -85,12 +83,28 @@ public class PoketmonMain {
 					System.out.println("로그인 실패");
 				}
 			}
-			System.out.println();
-			System.out.println("========================================================================================================================");
 			
 			if (menu == 3) {
+				System.out.println("       .^7?JYYY5YYYJ?7^.                 :~7?JYYYYYYJ7!^.                 :~?JYYYYYY5YYJ7~.         \n"
+						+ "     :~~~~7YYYYYYYYYYYYY?^            .^~!!?YYYYYYYYYYYYJ7^            .^~~~~7YYYYYYYYYYYYY?^       \n"
+						+ "   ^!:     7YYYYYYYYYYYYYYJ~        .!^.    ~YYYYYYYYYYYYYYJ~         ~~.     ?YYYYYYYYYYYYY5J^     \n"
+						+ "  7J      ^JYYYYYYYYYYYYYYY5?      ~Y.     .?YYYYYYYYYYYYYYY5?.     .J?      ~YYYYYYYYYYYYYYYY57    \n"
+						+ " ?5J~:.:~7YYYYY5PPP5PP5YYYYY5J    ~5Y~...:!JYYYYY5PPPPP5YYYYY5J    .J5J~::^!?YYYYY5PP55PP5YYYYY5?   \n"
+						+ "!5YYYYYYYYY555PPY!^^~7PPYYYYY57  :5YYYJJJYYYYYY5P57~^!?PPYYYYY57   75YYYYYY555555PP?~::~7PPYYYYY5!  \n"
+						+ "YYY555PPPPPPPPP5^.   :7PP555YY5. ?YYY555PPPPPPPPP~.   :!PP555YY5. .5YY555PPPPPPPPPY:    :JPPP555YY  \n"
+						+ "GGPPPPPP55YYYJ5P7:...~YPPPPPPPP. YGPPPPPPP555YY5P7:. .^?PPPPPPPP^ :GGPPPPP55YYJJJ5P7^..:!5PPPPPPP5  \n"
+						+ "PBP5Y?^:..    :J55YYY5Y~^~!?Y55. YBG55J!^::..  :JP5JJJ55!~!7JY5P: .GGPYY7:..     :J55YY55?::^!?J5Y  \n"
+						+ "7J7777:         .^!!~:       ^7  ~Y?777^         :~77!^.      :?   7J7777:         .^~~^.       ~!  \n"
+						+ " ??7777^                     7.   ??7777^                     !:   .??7777^                    .7   \n"
+						+ " .??7777!:                 ^7:     ??7777!:                 .!^     .??7777!:.               .~!.   \n"
+						+ "   ~??77777~:.         .:~?!.       ~??7777!~:.          .^77:        ~??77777~:.         .:!?~     \n"
+						+ "    .~???77777!!~~~~~!7??!.          .~???77777!~~^^^^~!7?7^           .~???77777!!!~~~!!???~.      \n"
+						+ "       :~77??????????7~:                :~7????????????7^.                :~!7?????????7!^.         \n"
+						+ "           .::^^^::.                       ..:^^^^^^:.                        ..:::::..             ");
+				
 				// 게임 시작
 				// 포켓몬 선택
+				System.out.println();
 				System.out.println("===============파트너 포켓몬 결정===============");
 				System.out.println();
 				System.out.print("[1] 피카츄 | [2] 꼬부기 | [3] 파이리");
@@ -107,7 +121,7 @@ public class PoketmonMain {
 					pm = new kkobugi("꼬부기");
 				else if (poketchoice == 3)
 					pm = new pairi("파이리");
-
+				System.out.println();
 				System.out.println("===============전투 난이도 결정===============");
 				System.out.println();
 				System.out.print("[1] Eazy | [2] Normal | [3] Hard");
@@ -126,13 +140,50 @@ public class PoketmonMain {
 				int score = 0;
 				int life = 3;
 				int no = 1;
-
+				
+				//뮤츠
+				System.out.println("                7G!. ~?          \n"
+						+ "                 .5#BGPBP          \n"
+						+ "                 P##BB##G:         \n"
+						+ "          :J?.   !GBPPBB5:         \n"
+						+ "          .JGJ!!:JYJPY5Y:          \n"
+						+ "        7Y7YPPPBBPBGBGGJ.          \n"
+						+ "  ~77?7^^!::~~:^^:5BBBGPJ~:        \n"
+						+ " :J: .~J7.         !GGGJ:~7Y7      \n"
+						+ " ^J.   :JJ~       .~PGGP?: .?5~    \n"
+						+ "  ?!    :JY?^.  .?B##B5Y55J:.PPY^  \n"
+						+ "  .?7:   ^JYYJ7!P&####YJYY5P^7^55^ \n"
+						+ "   .?5J!: :?YYY5#BBGBPJJJJ5Y.  .   \n"
+						+ "     !YP5?: ^7?YBGPPYJJJY5?.       \n"
+						+ "      .!JY7   ^PP!^^::.PP:         \n"
+						+ "         .   ~GG^     ~G5.         \n"
+						+ "            ~BG:     ~PY5Y!^^^.    \n"
+						+ "          .?##GY.     . .!JJY?^    \n"
+						+ "          YGJ?JY^                  \n"
+						+ "			");
+				System.out.println();
+				System.out.println("[스테이지 1!] ☆★☆★[뮤!츠!] 등장!☆★☆★");
+				
 				score = fight(no, id, nanchoice, stage, skillDamage, bossHP, score, skillGauge, life);
 
 				if (score > 0) {
 					stage++;
 
-					System.out.println("스테이지 2");
+					System.out.println("                                   \n"
+							+ "               .                   \n"
+							+ "            !5GGPY?:               \n"
+							+ "          .J##BBG5BG: ^~!!~.       \n"
+							+ "          :JY5YJJ?YPY5GGGGG57.     \n"
+							+ "      .?5P5JPPPG5JY5PGGGGGP55J     \n"
+							+ "      ~PY5GBBBBP5PG55GGGB#BPY5^    \n"
+							+ "       .?PGBBBGBBBGPPGP55555Y5^    \n"
+							+ "      ^GBB#BBG##BB##GBBG5555YY     \n"
+							+ "     :#&#&&BP#&###BGB#BBG55Y5^     \n"
+							+ "     !&&&&#PYPPGGP5GBBBGGYJPJ      \n"
+							+ "     .JPGP5Y5Y?7???JPPPG5: ~!      \n"
+							+ "        .^7!~^      ?5Y?^          ");
+					System.out.println();
+					System.out.println("[스테이지 2!] ☆★☆★☆★[내!루!미!] 등장!☆★☆☆★★");
 				}
 				no++;
 
@@ -142,29 +193,45 @@ public class PoketmonMain {
 					bossHP = 10;
 					score = fight(no, id, nanchoice, stage, skillDamage, bossHP, score, skillGauge, life);
 					stage++;
-					System.out.println("스테이지 3");
+					
+					System.out.println("         /!                        \n"
+							+ "       .5BB7                       \n"
+							+ "       YBGBG~                      \n"
+							+ "      JBBGBG5~                     \n"
+							+ "     JBBBBGP5J7:                   \n"
+							+ "    ?GPBBP5PG5PYJ!:                \n"
+							+ "   .5PPPYPGGGP555PPY?~:            \n"
+							+ "   ^BGBPGGP555555555PG?            \n"
+							+ "   ^GB5GBBBG5Y555555Y^             \n"
+							+ "    ~?JPPGGPY5555555!              \n"
+							+ "      ^?YYYY555555555?:            \n"
+							+ "       .!5P555PP5555555!.          \n"
+							+ "         .!Y5Y5PPPPP55YJ5?:        \n"
+							+ "            :^^!7?JYYJJJJJJJ~:.    \n"
+							+ "                   :^!!77????J!    \n"
+							+ "                        .....     ");
+					System.out.println();
+					System.out.println("[스테이지 3!] ☆★☆★☆★☆★[단!데!기!] 등장!☆★☆★☆★☆★");	
 
 				}
 				no++;
 				if (stage == 3) {
-					score += score;
+					
 					skillDamage = 30; // 2단계 시작시 생길 스킬의 데미지
 					skillGauge = 0;
 					bossHP = 10;
 					score = fight(no, id, nanchoice, stage, skillDamage, bossHP, score, skillGauge, life);
 					stage++;
 
-					dao.totalscore(score, id);
 
-				}
+					dao.totalscore(score, id);
+				}																		
 
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-			System.out.println();
-			System.out.println("========================================================================================================================");
 			
 			if (menu == 4) { // 랭킹 조회
-
+				System.out.println();
 				System.out.println("=============================랭킹 조회=============================");
 				ArrayList<PoketmonVO> rank = dao.rank();
 				for (int i = 0; i < rank.size(); i++) {
@@ -175,8 +242,6 @@ public class PoketmonMain {
 				}
 				
 			}
-			System.out.println();
-			System.out.println("========================================================================================================================");
 				
 				if (menu == 5) { // 오답 조회
 					System.out.print("아이디 입력 : ");

@@ -154,7 +154,7 @@ public class DAO {
 		int cnt = 0;
 		try {
 			getCon();
-			String sql = "update playerInfo set score = ? where id = ?";
+			String sql = "update playerinfo set score = ? where id = ?";
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setInt(1, score);

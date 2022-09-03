@@ -74,19 +74,19 @@ public class 이미지 {
 			+ "                        .....     ");
 	
 	
-	System.out.println("                                   \\r\r\n"
-			+ "               .                   \\r\r\n"
-			+ "            !5GGPY?:               \\r\r\n"
-			+ "          .J##BBG5BG: ^~!!~.       \\r\r\n"
-			+ "          :JY5YJJ?YPY5GGGGG57.     \\r\r\n"
-			+ "      .?5P5JPPPG5JY5PGGGGGP55J     \\r\r\n"
-			+ "      ~PY5GBBBBP5PG55GGGB#BPY5^    \\r\r\n"
-			+ "       .?PGBBBGBBBGPPGP55555Y5^    \\r\r\n"
-			+ "      ^GBB#BBG##BB##GBBG5555YY     \\r\r\n"
-			+ "     :#&#&&BP#&###BGB#BBG55Y5^     \\r\r\n"
-			+ "     !&&&&#PYPPGGP5GBBBGGYJPJ      \\r\r\n"
-			+ "     .JPGP5Y5Y?7???JPPPG5: ~!      \\r\r\n"
-			+ "        .^7!~^      ?5Y?^          \\r");
+	System.out.println("                                   \n"
+			+ "               .                   \n"
+			+ "            !5GGPY?:               \n"
+			+ "          .J##BBG5BG: ^~!!~.       \n"
+			+ "          :JY5YJJ?YPY5GGGGG57.     \n"
+			+ "      .?5P5JPPPG5JY5PGGGGGP55J     \n"
+			+ "      ~PY5GBBBBP5PG55GGGB#BPY5^    \n"
+			+ "       .?PGBBBGBBBGPPGP55555Y5^    \n"
+			+ "      ^GBB#BBG##BB##GBBG5555YY     \n"
+			+ "     :#&#&&BP#&###BGB#BBG55Y5^     \n"
+			+ "     !&&&&#PYPPGGP5GBBBGGYJPJ      \n"
+			+ "     .JPGP5Y5Y?7???JPPPG5: ~!      \n"
+			+ "        .^7!~^      ?5Y?^          ");
 	
 	
 	System.out.println("                7G!. ~?          \\r\r\n"
