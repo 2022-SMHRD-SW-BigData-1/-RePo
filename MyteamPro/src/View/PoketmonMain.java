@@ -5,6 +5,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Controller.DAO;
+import Controller.MusicPlayer;
+import Model.Music;
 import Model.Poketmon;
 import Model.PoketmonVO;
 import Model.WrongVO;
@@ -18,6 +20,7 @@ public class PoketmonMain {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		DAO dao = new DAO();
+		MusicPlayer player = new MusicPlayer();
 		String id = null;
 		System.out.println(
 				"========================================================================================================================");
@@ -46,15 +49,19 @@ public class PoketmonMain {
 		System.out.println(
 				"========================================================================================================================");
 
-		System.out.println();
+		Music m = null;
 		while (true) {
+			System.out.println("Start any press");
+			String start = sc.next();
+			if(start != null) {
+				m = player.play(0);
+			}
+			
 			System.out.print("[1]회원가입 [2]로그인 [3]게임시작 [4]랭킹조회 [5]오답조회 [6]종료 >> ");
 			int menu = sc.nextInt();
-
 			System.out.println();
 
 			if (menu == 1) { // 회원 가입
-
 				int rank = 0;
 				System.out.print("ID : ");
 				id = sc.next();
@@ -67,11 +74,9 @@ public class PoketmonMain {
 				} else {
 					System.out.println("등록 실패");
 				}
-
 			}
 			
 			if (menu == 2) { // 로그인
-
 				System.out.print("ID : ");
 				id = sc.next();
 				System.out.print("PassWord : ");
@@ -140,7 +145,8 @@ public class PoketmonMain {
 				int score = 0;
 				int life = 3;
 				int no = 1;
-				
+				System.out.println(player.stop());
+				m = player.play(1);
 				//뮤츠
 				System.out.println("                7G!. ~?          \n"
 						+ "                 .5#BGPBP          \n"
@@ -168,7 +174,7 @@ public class PoketmonMain {
 
 				if (score > 0) {
 					stage++;
-
+					m = player.play(1); // 등장노래
 					System.out.println("                                   \n"
 							+ "               .                   \n"
 							+ "            !5GGPY?:               \n"
@@ -193,7 +199,7 @@ public class PoketmonMain {
 					bossHP = 10;
 					score = fight(no, id, nanchoice, stage, skillDamage, bossHP, score, skillGauge, life);
 					stage++;
-					
+					m = player.play(1);
 					System.out.println("         /!                        \n"
 							+ "       .5BB7                       \n"
 							+ "       YBGBG~                      \n"
@@ -220,12 +226,17 @@ public class PoketmonMain {
 					skillDamage = 30; // 2단계 시작시 생길 스킬의 데미지
 					skillGauge = 0;
 					bossHP = 10;
+					System.out.println(player.stop());
 					score = fight(no, id, nanchoice, stage, skillDamage, bossHP, score, skillGauge, life);
-					stage++;
+					
 
-
+					System.out.print("메인페이지로 돌아가려면 '돌아가기'를 입력하세요 >> ");
+					String replay = sc.next();
+					
+					if(replay.equals("돌아가기")) {
 					dao.totalscore(score, id);
-				}																		
+					}
+				}
 
 			}
 //-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -271,10 +282,12 @@ public class PoketmonMain {
 	public static int fight(int no, String id, int nanchoice, int stage, int skillDamage, int bossHP, int score,
 			int skillGauge, int life) {
 
+		MusicPlayer player = new MusicPlayer();
 		DAO dao = new DAO();
 		Random rd = new Random();
 		Scanner sc = new Scanner(System.in);
-
+		Music m = null;
+		
 		ArrayList<gameProcessVO> list = dao.select(nanchoice);
 		while (bossHP > 0) {
 			int index = rd.nextInt(list.size());
@@ -287,8 +300,8 @@ public class PoketmonMain {
 			// 답 입력
 			System.out.print("정답입력 : ");
 			String input = sc.nextLine();
+			
 			// 정답
-
 			if (input.equals(word)) {
 				score += 100;
 				bossHP -= 10;
@@ -304,20 +317,22 @@ public class PoketmonMain {
 						System.out.println("스킬2 사용!!");
 						bossHP -= 20;
 					}
-					if (bossHP == 0) {
+					if (bossHP <= 0) {
+						
+						m = player.play(2);
 						System.out.println("YOU WIN");
 						System.out.println();
 						break;
 					}
 				}
 				if (bossHP <= 0) {
-
 					System.out.println("보스체력 : 0");
 				} else {
 					System.out.println("보스체력 : " + bossHP);
 				}
 				System.out.println("점수 : " + score);
 			}
+			
 			// 오답
 			else {
 				life--;
@@ -331,13 +346,15 @@ public class PoketmonMain {
 				if (cnt <= 0) {
 					System.out.println("오답 저장 실패");
 				}
-
-				if (life == 0) { // life가 0이면 게임 오버 출력 후 초기화면
-					System.out.println("GAME OVER");
-					break;
-				}
 			}
-
+			
+			if (life == 0) { // life가 0이면 게임 오버 출력 후 초기화면
+				
+				m = player.play(3);
+				System.out.println("GAME OVER");
+				break;
+				
+			}
 			System.out.println();
 		}
 		return score;
