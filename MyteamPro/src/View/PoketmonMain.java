@@ -277,24 +277,27 @@ public class PoketmonMain {
 		int skillDamage = 0; // 2단계 시작시 생길 스킬의 데미지
 		int skillGauge = 0;
 		int bossHP = 20;
+		int sumscore = 0;
 		
 		// 2단계, 3단계 기본 세팅
 		if (stage == 2) {
 			bossHP = 30;
 			skillDamage = 20;
 			skillGauge = 0;
+			
 		} else if (stage == 3) {
 			bossHP = 40;
 			skillDamage = 30;
 			skillGauge = 0;
+			
 		}
 		
 		// 스테이지 시작
 		while (bossHP > 0) {
 			// 문제 출력
 			int index = rd.nextInt(list.size());
-			String word = list.get(index).getAnswer();
-			String answer = list.get(index).getWord();
+			String answer = list.get(index).getAnswer();
+			String word = list.get(index).getWord();
 			System.out.println("문제 : " + word);
 			// 답 입력
 			System.out.print("정답입력 : ");
@@ -305,6 +308,7 @@ public class PoketmonMain {
 			if (input.equals(answer)) {
 				score += 100; // 점수 +100
 				skillGauge += 10; // 스킬게이지 +10
+				
 				// 보스에게 데미지
 				if (stage == 2 && skillGauge == 20) { // 2단계에서 스킬게이지 20이 차면 스킬1 사용
 					pm.skill1();
@@ -332,6 +336,7 @@ public class PoketmonMain {
 			else {
 				life--;
 				score -= 50;
+				
 				System.out.println("어휴..");
 				System.out.println("보스 체력 : " + bossHP);
 				System.out.println("남은 목숨 : " + life);

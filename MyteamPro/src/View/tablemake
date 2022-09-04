@@ -30,7 +30,7 @@ constraint wrong_id_fk foreign key(id) references playerinfo(id)
 );
 
 commit;
-drop table memberinfo cascade constraint;
+
 select * from PLAYERINFO;
 select * from QUIZ
 select * from WRONG
