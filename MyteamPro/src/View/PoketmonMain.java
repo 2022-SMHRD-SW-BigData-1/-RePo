@@ -135,7 +135,6 @@ public class PoketmonMain {
 				// 게임시작 기본값 설정
 				int stage = 1; // 단계
 				int score = 0;
-				int life = 3;
 				// 1단계 시작 - 뮤츠 등장
 				m = player.play(1);
 				System.out.println("                7G!. ~?          \n" + "                 .5#BGPBP          \n"
@@ -150,17 +149,11 @@ public class PoketmonMain {
 						+ "			");
 				System.out.println();
 				System.out.println("[스테이지 1!] ☆★☆★[뮤!츠!] 등장!☆★☆★");
-				life = fight(life, pm, id, nanchoice, stage, score);
+				score = fight(pm, id, nanchoice, stage, score);
 				ArrayList<PoketmonVO> list = new ArrayList<PoketmonVO>();
-				for(int i = 0; i < list.size(); i++) {
-					score = list.get(i).getScore();
-				}
-				
-				
 				// 1단계 종료
-				if (life > 0) {
+				if (score >= 200) {
 					stage++;
-					
 				} else {
 					m = player.play(3);
 					System.out.println("GAME OVER");
@@ -184,12 +177,9 @@ public class PoketmonMain {
 							+ "        .^7!~^      ?5Y?^          ");
 					System.out.println();
 					System.out.println("[스테이지 2!] ☆★☆★☆★[내!루!미!] 등장!☆★☆☆★★");
-					life = fight(life, pm, id, nanchoice, stage, score);
-					for(int i = 0; i < list.size(); i++) {
-						score = list.get(i).getScore();
-					}
+					score = fight(pm, id, nanchoice, stage, score);
 					// 2단계 종료
-					if (life > 0) {
+					if (score >= 600) {
 						stage++;
 					} else {
 						m = player.play(3);
@@ -217,12 +207,10 @@ public class PoketmonMain {
 							+ "                   :^!!77????J!    \n" + "                        .....     ");
 					System.out.println();
 					System.out.println("[스테이지 3!] ☆★☆★☆★☆★[단!데!기!] 등장!☆★☆★☆★☆★");
-					life = fight(life, pm, id, nanchoice, stage, score);
-					for(int i = 0; i < list.size(); i++) {
-						score = list.get(i).getScore();
-					}
+					score = fight(pm, id, nanchoice, stage, score);
+					
 					// 3단계 종료
-					if(life>0) {
+					if(score >= 1200) {
 						m = player.play(2);
 						System.out.println("YOU WIN");
 					} else {
@@ -271,6 +259,7 @@ public class PoketmonMain {
 		// [6]게임종료
 		if (menu == 6) {
 			System.out.println("게임 종료!");
+			System.out.println(player.stop());
 			break;
 		} // while문 처음으로
 
@@ -278,7 +267,7 @@ public class PoketmonMain {
 
 	}
 
-	public static int fight(int life, Poketmon pm, String id, int nanchoice, int stage, int score) {
+	public static int fight(Poketmon pm, String id, int nanchoice, int stage, int score) {
 
 		MusicPlayer player = new MusicPlayer();
 		DAO dao = new DAO();
@@ -289,17 +278,17 @@ public class PoketmonMain {
 		int damage = 10; // 기본공격 데미지
 		int skillDamage = 0; // 2단계 시작시 생길 스킬의 데미지
 		int skillGauge = 0;
-		int bossHP = 20;
-		int sumscore = 0;
-		
+		int bossHP = 30;
+		int life = 3;
+
 		// 2단계, 3단계 기본 세팅
 		if (stage == 2) {
-			bossHP = 30;
+			bossHP = 60;
 			skillDamage = 20;
 			skillGauge = 0;
 			
 		} else if (stage == 3) {
-			bossHP = 40;
+			bossHP = 90;
 			skillDamage = 30;
 			skillGauge = 0;
 			
@@ -325,10 +314,10 @@ public class PoketmonMain {
 				skillGauge += 10; // 스킬게이지 +10
 				
 				// 보스에게 데미지
-				if (stage == 2 && skillGauge == 20) { // 2단계에서 스킬게이지 20이 차면 스킬1 사용
+				if (stage == 2 && skillGauge == 30) { // 2단계에서 스킬게이지 20이 차면 스킬1 사용
 					pm.skill1();
 					bossHP -= skillDamage;
-				} else if (stage == 3 && skillGauge == 30) { // 3단계에서 스킬게이지 30이 차면 스킬2 사용
+				} else if (stage == 3 && skillGauge == 40) { // 3단계에서 스킬게이지 30이 차면 스킬2 사용
 					pm.skill2();
 					bossHP -= skillDamage;
 				} else { // 그 외에는 기본공격
@@ -337,14 +326,14 @@ public class PoketmonMain {
 				System.out.println("나이스!");
 				if (bossHP <= 0) {	// 보스 처치시
 					System.out.println("보스 체력 : 0");
-					System.out.println("남은 목숨 : " + life);
 					System.out.println("점수 : " + score);
 					break;
 				} else {
 					System.out.println("보스 체력 : " + bossHP);
+					System.out.println("남은 목숨 : " + life);
+					System.out.println("점수 : " + score);
 				}
-				System.out.println("남은 목숨 : " + life);
-				System.out.println("점수 : " + score);
+				dao.totalscore(score, id);
 			}
 
 			// 오답
@@ -357,7 +346,7 @@ public class PoketmonMain {
 				System.out.println("남은 목숨 : " + life);
 				System.out.println("점수 : " + score);
 				dao.Wrong(stage, word, answer, id); // 오답 저장
-				
+				dao.totalscore(score, id);
 				
 				// 목숨 모두 잃었을 때
 				if (life == 0) {
@@ -368,7 +357,7 @@ public class PoketmonMain {
 			System.out.println();
 		}
 		
-		dao.totalscore(score, id);
-		return life;
+		
+		return score;
 	}
 }
