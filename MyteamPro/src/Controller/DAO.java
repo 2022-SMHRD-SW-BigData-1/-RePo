@@ -16,7 +16,7 @@ public class DAO {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
-
+ 
 	Random rd = new Random();
 
 	public void getCon() { // DB 연결
