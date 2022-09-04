@@ -7,6 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/Oracle Thin Driver"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/smhrd/Desktop/Java Study/player.jar"/>
+	<classpathentry kind="lib" path="C:/Users/EGEG22A09/Desktop/JavaStudy/player.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

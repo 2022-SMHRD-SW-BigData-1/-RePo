@@ -24,9 +24,12 @@ public class kkobugi extends Poketmon{
 		System.out.println(name + "등장! 꼬북꼬북!!");
 	}
 	
+	@Override
 	public void skill1(){
 		System.out.println("몸통 박치기!");
 	}
+	
+	@Override
 	public void skill2(){
 		System.out.println("물대포!");
 	}

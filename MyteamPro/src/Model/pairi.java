@@ -21,12 +21,15 @@ public class pairi extends Poketmon{
 				+ "        ~YYJ?7:.:^~^~JYJJ^              \n"
 				+ "       .!7~:.        :7YY7.             \n"
 				+ "                       .                ");
-		System.out.println(name + "등장! 파이리~!!");
+		System.out.println(name + "등장! 파일파일!!");
 	}
 	
+	@Override
 	public void skill1(){
 		System.out.println("몸통 박치기!");
 	}
+	
+	@Override
 	public void skill2(){
 		System.out.println("불꽃 뿜기!");
 	}

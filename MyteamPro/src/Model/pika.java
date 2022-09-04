@@ -25,9 +25,12 @@ public class pika extends Poketmon{
 		
 	}
 	
+	@Override
 	public void skill1(){
 		System.out.println("몸통 박치기!");
 	}
+	
+	@Override
 	public void skill2(){
 		System.out.println("백만 볼트!");
 	}

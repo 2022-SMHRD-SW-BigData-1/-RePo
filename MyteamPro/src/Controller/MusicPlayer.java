@@ -14,42 +14,10 @@ public class MusicPlayer { // 기능 정의 클래스(컨트롤러)
 		musicList.add(new Music("보스출현","C://music/stage.mp3"));
 		musicList.add(new Music("승리","C://music/win.mp3"));
 		musicList.add(new Music("패배", "C://music/lose.mp3"));
-
 	}
 
-	public Music play(int index) {
+	public Music play(int index) {     // 노래 재생
 		Music m = musicList.get(index);
-
-		if (mp3.isPlaying()) {
-			mp3.stop();
-		}
-		mp3.play(m.getMusicPath());
-
-		return m;
-	}
-
-	public Music nextPlay() {
-		++currentIndex;
-		if (currentIndex >= musicList.size()) {
-			currentIndex = 0;
-		}
-		Music m = musicList.get(currentIndex);
-		if (mp3.isPlaying()) {
-			mp3.stop();
-		}
-		mp3.play(m.getMusicPath());
-
-		
-		return m;
-	}
-
-	public Music prePlay() {
-		--currentIndex;
-		if (currentIndex <= -1) {
-			currentIndex = musicList.size() - 1;
-		}
-		Music m = musicList.get(currentIndex);
-
 		if (mp3.isPlaying()) {
 			mp3.stop();
 		}
@@ -57,13 +25,11 @@ public class MusicPlayer { // 기능 정의 클래스(컨트롤러)
 		return m;
 	}
 
-	public String stop() {
-		String message = " ";
-
+	public String stop() {		// 노래 종료
+		String message = "";
 		if (mp3.isPlaying()) {
 			mp3.stop();
 		}
 		return message;
-
 	}
 }
