@@ -148,8 +148,33 @@ public class DAO {
 		}
 		return cnt;
 	}
+	
+	public ArrayList<PoketmonVO> currentscore(String id, String pw) {  // [3]게임진행 - 현재 점수 가져오기
+		ArrayList<PoketmonVO> list = new ArrayList<PoketmonVO>();
+		PoketmonVO vo = null;
 
-	public int Wrong(int no, String word, String answer, String id) {    // [3] 게임진행 - 오답저장
+		try {
+			getCon();
+			String sql = "select score from quiz where id = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				int score = rs.getInt(1);
+	
+				vo = new PoketmonVO(id, pw, score);
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+	public int Wrong(int no, String word, String answer, String id) {    // [3]게임진행 - 오답저장
 		int cnt = 0;
 		
 		try {

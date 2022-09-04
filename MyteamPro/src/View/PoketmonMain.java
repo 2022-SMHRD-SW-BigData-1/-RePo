@@ -151,9 +151,16 @@ public class PoketmonMain {
 				System.out.println();
 				System.out.println("[스테이지 1!] ☆★☆★[뮤!츠!] 등장!☆★☆★");
 				life = fight(life, pm, id, nanchoice, stage, score);
+				ArrayList<PoketmonVO> list = new ArrayList<PoketmonVO>();
+				for(int i = 0; i < list.size(); i++) {
+					score = list.get(i).getScore();
+				}
+				
+				
 				// 1단계 종료
 				if (life > 0) {
 					stage++;
+					
 				} else {
 					m = player.play(3);
 					System.out.println("GAME OVER");
@@ -178,6 +185,9 @@ public class PoketmonMain {
 					System.out.println();
 					System.out.println("[스테이지 2!] ☆★☆★☆★[내!루!미!] 등장!☆★☆☆★★");
 					life = fight(life, pm, id, nanchoice, stage, score);
+					for(int i = 0; i < list.size(); i++) {
+						score = list.get(i).getScore();
+					}
 					// 2단계 종료
 					if (life > 0) {
 						stage++;
@@ -208,6 +218,9 @@ public class PoketmonMain {
 					System.out.println();
 					System.out.println("[스테이지 3!] ☆★☆★☆★☆★[단!데!기!] 등장!☆★☆★☆★☆★");
 					life = fight(life, pm, id, nanchoice, stage, score);
+					for(int i = 0; i < list.size(); i++) {
+						score = list.get(i).getScore();
+					}
 					// 3단계 종료
 					if(life>0) {
 						m = player.play(2);
@@ -293,16 +306,16 @@ public class PoketmonMain {
 		while (bossHP > 0) {
 			// 문제 출력
 			int index = rd.nextInt(list.size());
-			String word = list.get(index).getAnswer();
-			String answer = list.get(index).getWord();
-			System.out.println("문제 : " + word);
+			String answer = list.get(index).getAnswer();   // 한글 문제
+			String word = list.get(index).getWord();	 // 영어 맞춰야하는 답	
+			System.out.println("문제 : " + answer);
 			// 답 입력
 			System.out.print("정답입력 : ");
 			String input = sc.nextLine();
 			System.out.println();
 			
 			// 정답
-			if (input.equals(answer)) {
+			if (input.equals(word)) {
 				score += 100; // 점수 +100
 				skillGauge += 10; // 스킬게이지 +10
 				// 보스에게 데미지
@@ -336,19 +349,18 @@ public class PoketmonMain {
 				System.out.println("보스 체력 : " + bossHP);
 				System.out.println("남은 목숨 : " + life);
 				System.out.println("점수 : " + score);
+				dao.Wrong(stage, word, answer, id); // 오답 저장
+				
 				
 				// 목숨 모두 잃었을 때
 				if (life == 0) {
 					System.out.println();
 					break;
 				}
-				
-				dao.Wrong(stage, word, answer, id); // 오답 저장
 			}
-			
 			System.out.println();
 		}
-
+		
 		dao.totalscore(score, id);
 		return life;
 	}
