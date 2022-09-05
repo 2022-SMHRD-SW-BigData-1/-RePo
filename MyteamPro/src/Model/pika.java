@@ -27,11 +27,26 @@ public class pika extends Poketmon{
 	
 	@Override
 	public void skill1(){
+		System.out.println("     :7~~~~~~~~~7^     7.    :!  .J.      .?.     \r\n"
+				+ "     !?         ??     57~!!~?J  .5.      :G:     \r\n"
+				+ "     :!~~~~?~~~~7:     5^    !Y  .P7!:    :G:     \r\n"
+				+ "    ^^^^^^~Y~^^^^^^    77~~~~7~  .Y.      .5.     \r\n"
+				+ "                                          .J      \r\n"
+				+ "     !?.::::::::?7     .^^^^^^^^^~Y.              \r\n"
+				+ "     ~J         ?!               .5.      ^Y:     \r\n"
+				+ "      .::::::::::                 ^        :    ");
 		System.out.println("몸통 박치기!");
 	}
 	
 	@Override
 	public void skill2(){
-		System.out.println("백만 볼트!");
+		System.out.println(
+				"    .Y:    J~  .Y.    .::::J! ~Y  5^     :G:\r\n"
+				+ "    .Y~~~~~J!~~!Y.         77 ~Y  5^     :G:\r\n"
+				+ "    .Y.    J~   Y.         ?! ~Y.:5^     :P.\r\n"
+				+ "     !!!!!!!.  .Y.        .Y: ~5~~5^     .Y\r\n"
+				+ "     .~        .J.       :?~  ~Y  5^       \r\n"
+				+ "     :Y.              ^~77:   ~Y  5^     .^.\r\n"
+				+ "      7!!!!!!!!!!:    ::.     ^J  J:     ^Y:");
 	}
 }
