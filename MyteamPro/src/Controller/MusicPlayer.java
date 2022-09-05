@@ -17,7 +17,7 @@ public class MusicPlayer { // 기능 정의 클래스(컨트롤러)
 	}
 
 	public Music play(int index) {     // 노래 재생
-		Music m = musicList.get(index);
+		Music m = musicList.get(index); 
 		if (mp3.isPlaying()) {
 			mp3.stop();
 		}
