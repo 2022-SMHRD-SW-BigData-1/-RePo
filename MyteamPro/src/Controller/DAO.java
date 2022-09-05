@@ -39,6 +39,8 @@ public class DAO {
 
 	private void close() {  // DB 연결 종료
 		try {
+			if (rs != null)
+				rs.close();
 			if (psmt != null)
 				psmt.close();
 			if (conn != null)

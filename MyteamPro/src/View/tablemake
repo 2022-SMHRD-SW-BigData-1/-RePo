@@ -14,7 +14,7 @@ create table quiz
 (no number(5),
 word varchar2(100),
 answer varchar2(100),
-difficulty varchar2(100),
+difficulty varchar2(10),
 constraint quiz_word_pk primary key(word)
 );
 
@@ -22,8 +22,8 @@ drop table wrong cascade constraint;
 
 create table wrong
 (no number(5),
-word varchar2(20),
-answer varchar2(20),
+word varchar2(100),
+answer varchar2(100),
 id varchar2(10),
 constraint wrong_word_fk foreign key(word) references quiz(word),
 constraint wrong_id_fk foreign key(id) references playerinfo(id)

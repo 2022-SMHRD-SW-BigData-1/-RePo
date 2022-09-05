@@ -326,14 +326,16 @@ public class PoketmonMain {
 				System.out.println("나이스!");
 				if (bossHP <= 0) {	// 보스 처치시
 					System.out.println("보스 체력 : 0");
+					System.out.println("남은 목숨 : " + life);
 					System.out.println("점수 : " + score);
+					dao.totalscore(score, id);
 					break;
 				} else {
 					System.out.println("보스 체력 : " + bossHP);
 					System.out.println("남은 목숨 : " + life);
 					System.out.println("점수 : " + score);
+					dao.totalscore(score, id);
 				}
-				dao.totalscore(score, id);
 			}
 
 			// 오답
